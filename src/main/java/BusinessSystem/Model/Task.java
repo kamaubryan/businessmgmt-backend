@@ -2,6 +2,7 @@ package BusinessSystem.Model;
 
 import BusinessSystem.Enums.Priority;
 import BusinessSystem.Enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,6 +50,7 @@ public class Task {
 
     private Timestamp updatedAt;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaskFile> files = new ArrayList<>();
 }
